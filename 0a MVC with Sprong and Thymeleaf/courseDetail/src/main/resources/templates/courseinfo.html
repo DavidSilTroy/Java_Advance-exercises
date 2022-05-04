@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Paint</title>
+</head>
+<body>
+    <h3>Course</h3>
+    <p th:text="'Name: '+ ${coursename}"/>
+    <p th:text="'Location: '+ ${location}"/>
+    <p th:text="${info}"/>
+    <p><a href="/">Back</a></p>
+</body>
+</html>
