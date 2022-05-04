@@ -18,7 +18,7 @@ public class MainController {
         return	"index";
     }
 
-    @RequestMapping("/submitcalculate")
+    @RequestMapping("/paint")
     public	String	calculatePaint(HttpServletRequest request, Model model)
     {
         String name = request.getParameter("name");
@@ -42,7 +42,7 @@ public class MainController {
         model.addAttribute("paintLiters", paint.getAmountOfPaintInLitres());
 
 
-        return	"calculation";
+        return "paint";
     }
 
 }
