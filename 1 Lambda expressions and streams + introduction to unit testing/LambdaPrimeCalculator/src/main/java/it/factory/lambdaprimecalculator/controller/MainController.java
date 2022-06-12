@@ -15,8 +15,8 @@ public class MainController {
     List<Integer> numbersList = prime.getAllPrimeUntil(0);
 
     @RequestMapping("/")
-    public String Calculate(HttpServletRequest request, Model model){
-        String strNumb = (request.getParameter("number")!=null ? request.getParameter("number") : "0");
+    public String Calculate(HttpServletRequest request, Model model) {
+        String strNumb = (request.getParameter("number") != null ? request.getParameter("number") : "0");
         int number = Integer.parseInt(strNumb);
         numbersList = prime.getAllPrimeUntil(number);
         model.addAttribute("numberList", numbersList);
