@@ -2,6 +2,7 @@ package it.factory.lambdasearching.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class School {
@@ -60,10 +61,29 @@ public class School {
 
     //create the filter
     public List<Student> getFilteredList(String lname,String fname,int age, int numberOfCourses, String course){
-        return studentList;
+        List<Student> filteredList = studentList.stream().sorted((x,y) -> x.getLastName().compareTo(y.getLastName())).toList();
+        filteredList = filteredList.stream().filter(x -> x.getAge()>age).toList();
+        filteredList = filteredList.stream().filter(x -> x.getCourseList().size() > numberOfCourses).toList();
+
+        if (lname != ""){
+            filteredList = filteredList.stream().filter(x -> x.getLastName().contains(lname) || x.getLastName().contains(lname.toUpperCase())).toList();
+        }
+        if (fname != ""){
+            filteredList = filteredList.stream().filter(x -> x.getFirstName().contains(fname) || x.getLastName().contains(fname.toUpperCase())).toList();
+        }
+        if (course != ""){
+            filteredList = filteredList
+                    .stream()
+                    .filter(student ->
+                            getFilteredOnCourse(student.getCourseList().stream(),course).count()>0
+                    )
+                    .collect(Collectors.toList());
+
+        }
+        return filteredList;
     }
     //create the filter
-//    public  Stream getFilteredOnCourse(Stream filteredList, String course){
-//        return 0;
-//    }
+    public  Stream<Course> getFilteredOnCourse(Stream<Course> filteredList, String course){
+        return filteredList.filter(c-> c.getName().equals(course));
+    }
 }

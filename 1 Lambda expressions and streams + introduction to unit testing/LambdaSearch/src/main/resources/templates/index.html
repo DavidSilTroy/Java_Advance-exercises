@@ -2,9 +2,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Title</title>
+    <title>Lambda Seacrh</title>
 </head>
 <body>
-    Hi from the index of this Lambda Searching.
+<form action="/">
+    <p>
+        <label for="lastname">Search for students with lastname containing this:</label>
+        <input type="text" name="lastname" id="lastname" th:value="${lastName}" >
+    </p>
+    <p>
+        <label for="firstname">Search for students with firsttname containing this:</label>
+        <input type="text" name="firstname" id="firstname" th:value="${firstName}" >
+    </p>
+    <p>
+        <label for="age">Search students older than:</label>
+        <input type="text" name="age" id="age" th:value="${age}" >
+    </p>
+    <p>
+        <label for="coursesnumber">Search students with more than:</label>
+        <input type="number" name="coursesnumber" id="coursesnumber"  th:value="${coursesNumber}" >
+        <label>number of courses</label>
+    </p>
+    <p>
+        <label for="course">Seach students with this course:</label>
+        <select id="course" name="course" >
+            <option th:value="${null}" selected>Choose a course</option>
+            <option th:each="option : ${courses}" th:value="${option.getName()}" th:text="${option.getName()}" th:selected="${option.getName() == courseName}"></option>
+        </select>
+    </p>
+    <p>
+        <input type="submit" name="submit" value="Search">
+    </p>
+</form>
+<div th:if="${result!=''}">
+    <h2 th:text="${result}"> Here the result!</h2>
+
+    <!--List of hyperlinks-->
+    <ul th:if="${studentsList!=null}">
+        <li th:each="student : ${studentsList}">
+            <p th:text="${student.getFirstName()} + ' ' + ${student.getLastName()} + '('+${student.age}+' year old)'"></p>
+        </li>
+    </ul>
+
+</div>
 </body>
 </html>

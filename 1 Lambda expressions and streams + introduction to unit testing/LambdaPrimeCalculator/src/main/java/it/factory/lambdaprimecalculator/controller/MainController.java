@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 public class MainController {
-    PrimeCalculator prime = new PrimeCalculator();
+    private PrimeCalculator prime = new PrimeCalculator();
     List<Integer> numbersList = prime.getAllPrimeUntil(0);
 
     @RequestMapping("/")
