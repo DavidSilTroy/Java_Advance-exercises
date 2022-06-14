@@ -1,96 +1,96 @@
 package fact.it.refullingserviceapi;
 
-import fact.it.refullingserviceapi.model.Refulling;
+import fact.it.refullingserviceapi.model.Refuelling;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class RefullingTests {
+class RefuellingTests {
 
-    private Refulling refulling;
+    private Refuelling refuelling;
 
     @Test
     void refuelling30litersAnd500km() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         100,
                         600,
                         30
                 );
-        assertEquals(6,refulling.getFuelConsumption());
+        assertEquals(6, refuelling.getFuelConsumption());
     }
     @Test
     void refuelling10litersAnd500km() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         100,
                         600,
                         10
                 );
-        assertEquals(2,refulling.getFuelConsumption());
+        assertEquals(2, refuelling.getFuelConsumption());
     }
     @Test
     void refuelling20litersAnd400km() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         300,
                         700,
                         20
                 );
-        assertEquals(5,refulling.getFuelConsumption());
+        assertEquals(5, refuelling.getFuelConsumption());
     }
     @Test
     void setANewAmountInLitres() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         300,
                         700,
                         20
                 );
-        refulling.setAmountInLitres(30.6);
-        assertEquals(30.6,refulling.getAmountInLitres());
+        refuelling.setAmountInLitres(30.6);
+        assertEquals(30.6, refuelling.getAmountInLitres());
     }
     @Test
     void setANewPreviousMileage() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         300,
                         700,
                         20
                 );
-        refulling.setPreviousMileage(329);
-        assertEquals(329,refulling.getPreviousMileage());
+        refuelling.setPreviousMileage(329);
+        assertEquals(329, refuelling.getPreviousMileage());
     }
     @Test
     void setANewCurrentMileage() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         300,
                         700,
                         20
                 );
-        refulling.setCurrentMileage(1010);
-        assertEquals(1010,refulling.getCurrentMileage());
+        refuelling.setCurrentMileage(1010);
+        assertEquals(1010, refuelling.getCurrentMileage());
     }
     @Test
     void setANewId() {
-        refulling =
-                new Refulling(
+        refuelling =
+                new Refuelling(
                         1,
                         300,
                         700,
                         20
                 );
-        refulling.setId(9);
-        assertEquals(9,refulling.getId());
+        refuelling.setId(9);
+        assertEquals(9, refuelling.getId());
     }
 
 }

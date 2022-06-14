@@ -1,12 +1,12 @@
 package fact.it.refullingserviceapi.model;
 
-public class Refulling {
+public class Refuelling {
     private int id;
     private int currentMileage;
     private int previousMileage;
     private double amountInLitres;
 
-    public  Refulling(int id, int previousMileage, int currentMileage,double amountInLitres){
+    public Refuelling(int id, int previousMileage, int currentMileage, double amountInLitres){
         this.id = id;
         this.previousMileage = previousMileage;
         this.currentMileage = currentMileage;
@@ -47,6 +47,11 @@ public class Refulling {
 
 
     public double getFuelConsumption() {
+        if (currentMileage<previousMileage){
+            int tempCurrentMileage = currentMileage;
+            currentMileage = previousMileage;
+            previousMileage = tempCurrentMileage;
+        }
         return 100*amountInLitres/(currentMileage-previousMileage);
     }
 }
