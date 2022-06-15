@@ -32,6 +32,24 @@ public class BreadController {
         model.addAttribute("breadList", list);
         return "index";
     }
+    @RequestMapping("/search")
+    public String search (Model model, HttpServletRequest request){
+        String searchString = request.getParameter("searchstring");
+        searchString = searchString != null? searchString : "";
+        List<Bread> list = breadRepository.findAllByNameStartsWith(searchString);
+        model.addAttribute("breadList", list);
+        model.addAttribute("searchedString",searchString);
+        return "index";
+    }
+    @RequestMapping("/searchcheap")
+    public String searchcheap (Model model, HttpServletRequest request){
+        String searchString = request.getParameter("searchstring");
+        searchString = searchString != null? searchString : "";
+        List<Bread> list = breadRepository.findCheapestBreads();
+        model.addAttribute("breadList", list);
+        model.addAttribute("searchedString",searchString);
+        return "index";
+    }
     @RequestMapping("/add")
     public String add (){
         return "add";

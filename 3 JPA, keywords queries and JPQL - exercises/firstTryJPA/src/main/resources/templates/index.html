@@ -11,9 +11,16 @@
 
         <label for="searchstring">Search for a bread: </label>
 
-        <input type="text" name="searchstring" id="searchstring">
+        <input type="text" name="searchstring" id="searchstring" th:value="${searchedString}">
 
         <input type="submit" value="Search" name="searchname">
+
+    </p>
+</form>
+<form action="/searchcheap" method="post">
+    <p>
+
+        <input type="submit" value="Search the Cheapest bread(s)" name="searchname">
 
     </p>
 </form>
