@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PersonController {
+    //This is with the SINGLE_TABLE inheritance strategy
     private PersonRepository personRepository;
 
     public PersonController(PersonRepository personRepository) {
