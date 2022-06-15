@@ -10,6 +10,25 @@
 <p><a href="/addCustomer">Add a customer</a></p>
 <p><a href="/addEmployee">Add an employee</a></p>
 <p><a href="/addExecutive">Add an executive</a></p>
+</br>
+<ol>
+    <li th:each="person : ${personList}" >
+    <span th:text="${person.getName()}"/>
+    </li>
+</ol>
+
+<ol>
+    <li th:each="person : ${personList}"><span th:text="${person.getName()}"/>
+        <span th:if="${person.class.simpleName == 'Customer'}"
+        		th:text="'gets ' + ${person.getDiscount()}  + ' Discount'" />
+        <span th:if="${person.class.simpleName == 'Executive'}"
+        		th:text="'has a bonus of ' + ${person.getBonus()}"/>
+        <span th:if="${person.class.simpleName == 'Employee'}"
+        		th:text="'earns ' + ${person.getSalary()}" />
+    </li>
+</ol>
+
+
 
 </body>
 

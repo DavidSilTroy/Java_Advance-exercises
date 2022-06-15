@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class PersonController {
@@ -21,7 +22,9 @@ public class PersonController {
     }
 
     @RequestMapping("/")
-    public String index() {
+    public String index(Model model) {
+        List<Person> list = personRepository.findAll();
+        model.addAttribute("personList", list);
         return "index";
     }
 
