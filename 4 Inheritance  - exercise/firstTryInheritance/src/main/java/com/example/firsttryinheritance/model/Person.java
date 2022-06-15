@@ -4,11 +4,7 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //This one is normally by default, so it is actually not necessary to write it
-//The 2 next lines are to change the name of the column "dtype" to "persontype"
-@DiscriminatorColumn(name = "PERSONTYPE", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("Person") //This can be also added to each subclass
-//
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 public class Person {
 
