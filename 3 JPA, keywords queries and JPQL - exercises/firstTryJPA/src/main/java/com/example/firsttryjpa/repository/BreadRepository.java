@@ -12,6 +12,10 @@ public interface BreadRepository extends JpaRepository<Bread,Long> {
     //Extra methods than can be add and the interface will understand:
     List<Bread> findAllByNameStartsWith(String searchString);
     List<Bread> findAllByOrderByPriceAsc();
+    //List<Bread> giveListOfAllBreadsOrderedByPrice();
+
+
+
 
     @Query("select b from Bread b where b.price in (select min(b.price) from Bread b)")
     List<Bread> findCheapestBreads();
