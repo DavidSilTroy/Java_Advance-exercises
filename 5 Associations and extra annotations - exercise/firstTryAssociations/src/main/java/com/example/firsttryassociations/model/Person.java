@@ -15,21 +15,15 @@ public class Person {
     @ManyToOne
     private Team team;
     @OneToMany(cascade={CascadeType.ALL})
-    private List<Phone> phonenbrs = new ArrayList<>(); // Always instantiate that collection immediately
+    private List<Phone> phonenbrs = new ArrayList<>();// Always instantiate that collection immediately!
     @ManyToMany
     @JoinTable(name="coursestudent")
-    private List<Course> courses = new ArrayList<>(); // Always instantiate that collection immediately
+    private List<Course> courses = new ArrayList<>();// Always instantiate that collection immediately!
+
+
     public Person() {
         passport = new Passport();
     }
-
-    public void  addPhonenbr(String type, String number){
-        Phone phone = new Phone();
-        phone.setType(type);
-        phone.setNumber(number);
-        this.phonenbrs.add(phone);
-    }
-
 
     public Long getId() {
         return id;
@@ -47,12 +41,27 @@ public class Person {
         this.name = name;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
     public Team getTeam() {
         return team;
     }
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public void addPhonenbr(String type, String number){
+        Phone phone = new Phone();
+        phone.setType(type);
+        phone.setNumber(number);
+        this.phonenbrs.add(phone);
     }
 
     public List<Phone> getPhonenbrs() {
@@ -71,16 +80,8 @@ public class Person {
         this.courses = courses;
     }
 
-    public Passport getPassport() {
-        return passport;
-    }
-
-    public void setPassport(Passport passport) {
-        this.passport = passport;
-    }
-
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 }

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Phone {
     @Id
@@ -39,5 +40,4 @@ public class Phone {
     public void setNumber(String number) {
         this.number = number;
     }
-
 }

@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add person</title>
+    <title>Associations</title>
 </head>
-<body>.
+<body>
 <h1>Make Person</h1>
-<form action="/processAddPerson" >
+
+<form action="/processAddPerson" method="post">
     <p>
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
@@ -19,12 +20,11 @@
         <select name="teamIndex">
             <option value = "-1">Choose a team </option>
             <option th:each= "team: ${teamList}" th:text="${team.toString()}" th:value="${team.getId()}"  ></option>
-        </select>.
+        </select>
     </p>
     <p>
-        <input type="submit" value="create team member" name="create team member">.
+        <input type="submit" value="make teammember" name="make teammember">
     </p>
-</form>.
+</form>
 </body>
-
 </html>

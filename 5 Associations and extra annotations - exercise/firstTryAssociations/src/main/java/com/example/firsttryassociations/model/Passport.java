@@ -14,6 +14,10 @@ public class Passport {
     public Passport() {
     }
 
+    public Passport(String passportnbr) {
+        this.passportnbr = passportnbr;
+    }
+
     public Long getId() {
         return id;
     }
@@ -26,15 +30,15 @@ public class Passport {
         return person;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
     public String getPassportnbr() {
         return passportnbr;
     }
 
     public void setPassportnbr(String passportnbr) {
         this.passportnbr = passportnbr;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

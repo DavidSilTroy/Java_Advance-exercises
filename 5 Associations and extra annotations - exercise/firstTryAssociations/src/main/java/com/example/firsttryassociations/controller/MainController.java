@@ -1,5 +1,6 @@
 package com.example.firsttryassociations.controller;
 
+import com.example.firsttryassociations.model.Passport;
 import com.example.firsttryassociations.model.Person;
 import com.example.firsttryassociations.model.Team;
 import com.example.firsttryassociations.repository.PersonRepository;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
+
 
 @Controller
 public class MainController {
@@ -31,7 +33,7 @@ public class MainController {
 
     @RequestMapping("/addTeam")
     public String addTeam() {
-        return "addteam";
+        return "addTeam";
     }
 
     @RequestMapping("/processAddTeam")
@@ -48,51 +50,47 @@ public class MainController {
     }
 
     @RequestMapping("/addPerson")
-    public String addPerson(Model model) {
+    public String addPersoon(Model model) {
         List<Team> list = teamRepository.findAll();
         model.addAttribute("teamList", list);
         return "addPerson";
     }
 
     @RequestMapping("/processAddPerson")
-    public String processAddPerson(Model model, HttpServletRequest request) {
+    public String processAddPersoon(Model model, HttpServletRequest request) {
         String name = request.getParameter("name");
         long teamId = Long.parseLong(request.getParameter("teamIndex"));
         Optional<Team> team = teamRepository.findById(teamId);
+
         Person person = new Person();
         person.setName(name);
-
-        if (team.isPresent())
-        {
+        if (team.isPresent()) {
             person.setTeam(team.get());
         }
-
+        person.setPassport(new Passport(request.getParameter("passport")));
         personRepository.save(person);
         List<Team> list = teamRepository.findAll();
         model.addAttribute("teamList", list);
         return "index";
     }
+
     @RequestMapping("/addPhone")
-    public String addTelephone(Model model) {
+    public String addTelefoon(Model model) {
         List<Person> list = personRepository.findAll();
         model.addAttribute("personList", list);
         return "addPhone";
     }
 
     @RequestMapping("/processAddPhone")
-    public String processAddTelephone(Model model, HttpServletRequest request) {
+    public String processAddTelefoon(Model model, HttpServletRequest request) {
         String type = request.getParameter("type");
         String number = request.getParameter("number");
-        long personId = Long.parseLong(request.getParameter("personIndex"));
-        Person person = personRepository.findById(personId).get();
+        long persoonId = Long.parseLong(request.getParameter("personIndex"));
+        Person person = personRepository.findById(persoonId).get();
         person.addPhonenbr(type, number);
         personRepository.save(person);
         List<Team> list = teamRepository.findAll();
         model.addAttribute("teamList", list);
         return "index";
     }
-
-
-
-
 }

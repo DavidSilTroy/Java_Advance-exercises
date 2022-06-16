@@ -2,19 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Associations and extra Annotations</title>
+    <title>Associations</title>
 </head>
-<body>.
+<body>
+
 <ol>
-    <li th:each="team : ${teamlist}" ><span th:text="${team.get.getAssignment()}"/>
+    <li th:each="team : ${teamList}" ><span th:text="${team.getAssignment()}" />
         <ol>
             <li th:each="member : ${team.getMembers()}">
                 <span th:text="${member.getName()}" />
-                <span th:text="'(passportnbr: '+${member.getPassport().getPassportnbr()+')'}">
-
-                </span>
+                <span th:text="'(passportnbr: '+${member.getPassport().getPassportnbr()+')'}"></span>
                 <ul>
-                    <li th:each="tel : ${member.getPhonenrs()}">
+                    <li th:each="tel : ${member.getPhonenbrs()}">
                         <span th:text="${tel.getType()} + ': ' + ${tel.getNumber()}" />
                     </li>
                 </ul>
@@ -23,24 +22,14 @@
     </li>
 </ol>
 
+
+
+
 <br/>
 
-<p>
-    <a href="/addTeam">
-        Add team
-    </a>
-</p>
-<p>
-    <a href="/addPerson">
-        Add a person to a team
-    </a>
-</p>
-<p>
-    <a href="/addPhone">
-        Add phone number
-    </a>
-</p>
+<p><a href="/addTeam">Add team</a></p>
+<p><a href="/addPerson">Add person to a team</a></p>
+<p><a href="/addPhone">Add phonenumber</a></p>
 
-</body>.
-
+</body>
 </html>
