@@ -72,7 +72,7 @@ public class MainController {
         model.addAttribute("teamList", list);
         return "index";
     }
-    @RequestMapping("/addphone")
+    @RequestMapping("/addPhone")
     public String addTelephone(Model model) {
         List<Person> list = personRepository.findAll();
         model.addAttribute("personList", list);

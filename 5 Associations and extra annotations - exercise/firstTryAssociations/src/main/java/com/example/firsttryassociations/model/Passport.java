@@ -7,9 +7,9 @@ public class Passport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @OneToOne(mappedBy = "passport")
-    private Person passportnbr;
+    @OneToOne(mappedBy= "passport")
+    private Person person;
+    private String passportnbr;
 
     public Passport() {
     }
@@ -22,11 +22,19 @@ public class Passport {
         this.id = id;
     }
 
-    public Person getPassportnbr() {
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public String getPassportnbr() {
         return passportnbr;
     }
 
-    public void setPassportnbr(Person passportnbr) {
+    public void setPassportnbr(String passportnbr) {
         this.passportnbr = passportnbr;
     }
 }

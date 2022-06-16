@@ -9,9 +9,8 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String name;
-
-    @ManyToMany(mappedBy = "courses")
+    private String name;
+    @ManyToMany(mappedBy="courses")
     private List<Person> students = new ArrayList<>();// Always instantiate that collection immediately!
 
     public Course() {

@@ -10,8 +10,8 @@ public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String type;
-    String number;
+    private String type;
+    private String number;
 
     public Phone() {
     }
@@ -39,4 +39,5 @@ public class Phone {
     public void setNumber(String number) {
         this.number = number;
     }
+
 }

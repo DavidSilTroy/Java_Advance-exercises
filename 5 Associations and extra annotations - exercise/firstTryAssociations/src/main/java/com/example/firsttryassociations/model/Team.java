@@ -9,12 +9,10 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String assignment;
-    String number;
-
-    @OneToMany(mappedBy = "team")
-    private List<Person> members = new ArrayList<>(); //Instantiate immediately
-
+    private String assignment;
+    private String number;
+    @OneToMany(mappedBy="team")
+    private List<Person> members = new ArrayList<>(); // Always instantiate that collection immediately
 
     public Team() {
     }

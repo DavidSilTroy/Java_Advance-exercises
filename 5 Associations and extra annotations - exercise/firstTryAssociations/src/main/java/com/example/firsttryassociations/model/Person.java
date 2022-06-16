@@ -9,21 +9,18 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private  String name;
-
+    private String name;
     @OneToOne(cascade={CascadeType.ALL})
     private Passport passport;
-
     @ManyToOne
     private Team team;
-
-    @OneToMany
+    @OneToMany(cascade={CascadeType.ALL})
     private List<Phone> phonenbrs = new ArrayList<>(); // Always instantiate that collection immediately
-
     @ManyToMany
-    private List<Course> courses = new ArrayList<>();
-
+    @JoinTable(name="coursestudent")
+    private List<Course> courses = new ArrayList<>(); // Always instantiate that collection immediately
     public Person() {
+        passport = new Passport();
     }
 
     public void  addPhonenbr(String type, String number){
@@ -32,6 +29,7 @@ public class Person {
         phone.setNumber(number);
         this.phonenbrs.add(phone);
     }
+
 
     public Long getId() {
         return id;
@@ -71,6 +69,14 @@ public class Person {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
     }
 
     @Override
