@@ -111,26 +111,26 @@ class RestaurantAppStartApplicationTests {
 
     }
 
-//    @Test
-//    public void d_testStrategyPatternZonderBetaalStrategie_1(){
-//        //gerechten aanmaken
-//        Dish videe = new Dish();
-//        videe.setName("Vidée met frietjes");
-//        videe.setCurrentPrice(15.0);
-//        Dish croque = new Dish();
-//        croque.setName("Croque Monsieur");
-//        croque.setCurrentPrice(10.0);
-//
-//        //maak order met bestelitems
-//        Order order = new Order();
-//        //NORMAAL
-//        order.setDate(LocalDate.now());
-//        order.addItem(videe, 2);
-//        order.addItem(croque, 3);
-//        assertEquals(60.0, order.getTotal(),0.1);
-//
-//
-//    }
+    @Test
+    public void d_testStrategyPatternZonderBetaalStrategie_1(){
+        //gerechten aanmaken
+        Dish videe = new Dish();
+        videe.setName("Vidée met frietjes");
+        videe.setCurrentPrice(15.0);
+        Dish croque = new Dish();
+        croque.setName("Croque Monsieur");
+        croque.setCurrentPrice(10.0);
+
+        //maak order met bestelitems
+        Order order = new Order();
+        //NORMAAL
+        order.setDate(LocalDate.now());
+        order.addItem(videe, 2);
+        order.addItem(croque, 3);
+        assertEquals(60.0, order.getTotal(),0.1);
+
+
+    }
 //    @Test
 //    public void e_testStrategyPatternMetBetaalStrategie_2(){
 //        HappyHourPayment happyHourPayment = new HappyHourPayment();

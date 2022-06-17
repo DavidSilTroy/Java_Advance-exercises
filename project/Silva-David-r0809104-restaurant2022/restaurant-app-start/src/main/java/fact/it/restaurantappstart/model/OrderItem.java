@@ -14,6 +14,9 @@ public class OrderItem {
     @ManyToOne
     Dish dish;
 
+    public OrderItem() {
+    }
+
     public Long getId() {
         return id;
     }

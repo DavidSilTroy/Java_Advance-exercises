@@ -13,6 +13,9 @@ public class Dish {
     String name;
     double currentPrice;
 
+    public Dish() {
+    }
+
     public Long getId() {
         return id;
     }

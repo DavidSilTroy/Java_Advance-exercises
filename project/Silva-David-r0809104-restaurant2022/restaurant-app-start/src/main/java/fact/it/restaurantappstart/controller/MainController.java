@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fact.it.restaurantappstart.model.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 
 @Controller
 public class MainController {
@@ -68,52 +69,52 @@ public class MainController {
 
         }
         if (request.getParameter("strategytest") != null) {
-//            System.out.println("####################################################################");
-//            //Betalingstrategieën aanmaken
-//            HappyHourPayment happyHourPayment = new HappyHourPayment();
-//            NormalPayment normalPayment = new NormalPayment();
-//            //gerechten aanmaken
-//            Dish videe = new Dish();
-//            videe.setName("Fish and Chips");
-//            videe.setCurrentPrice(15.0);
-//            Dish croque = new Dish();
-//            croque.setName("Cottage Pie");
-//            croque.setCurrentPrice(10.0);
-//
-//
-//            //maak order met bestelitems
-//            Order order = new Order();
-//            //NORMAAL
-//            order.setPaymentStrategy(normalPayment);
-//            order.setDate(LocalDate.now());
-//            order.addItem(videe, 2);
-//            order.addItem(croque, 2);
-//            System.out.println("The normal payment strategy is implemented: ");
-//            for( OrderItem i: order.getBesteldItems()){
-//                System.out.println(i.getQuantity() + " " + i.getDish().getName() + " price " + i.getAppliedPrice() );
-//            }
-//
-//
-//            //HAPPYHOUR
-//            order.setPaymentStrategy(happyHourPayment);
-//            order.addItem(videe, 2);
-//            order.addItem(croque, 2);
-//            System.out.println("The happy-hour payment strategy is implemented: ");
-//            for (int i=2;i<4;i++){
-//                System.out.println(order.getBesteldItems().get(i).getQuantity() + " " + order.getBesteldItems().get(i).getDish().getName() + " price " + order.getBesteldItems().get(i).getAppliedPrice() );
-//            }
-//
-//            //NORMAAL
-//            order.setPaymentStrategy(normalPayment);
-//            order.addItem(videe, 2);
-//            order.addItem(croque, 2);
-//            System.out.println("The normal payment strategy is implemented again: ");
-//            for (int i=4;i<6;i++){
-//                System.out.println(order.getBesteldItems().get(i).getQuantity() + " " + order.getBesteldItems().get(i).getDish().getName() + " price " + order.getBesteldItems().get(i).getAppliedPrice() );
-//            }
-//            System.out.println("Order balance " + order.getTotal() + " euro");
-//            System.out.println("####################################################################");
-//            feedbacktekst = "strategytest has been executed. Check the output window of IntelliJ to see the result";
+            System.out.println("####################################################################");
+            //Betalingstrategieën aanmaken
+            HappyHourPayment happyHourPayment = new HappyHourPayment();
+            NormalPayment normalPayment = new NormalPayment();
+            //gerechten aanmaken
+            Dish videe = new Dish();
+            videe.setName("Fish and Chips");
+            videe.setCurrentPrice(15.0);
+            Dish croque = new Dish();
+            croque.setName("Cottage Pie");
+            croque.setCurrentPrice(10.0);
+
+
+            //maak order met bestelitems
+            Order order = new Order();
+            //NORMAAL
+            order.setPaymentStrategy(normalPayment);
+            order.setDate(LocalDate.now());
+            order.addItem(videe, 2);
+            order.addItem(croque, 2);
+            System.out.println("The normal payment strategy is implemented: ");
+            for( OrderItem i: order.getOrderItemList()){
+                System.out.println(i.getQuantity() + " " + i.getDish().getName() + " price " + i.getAppliedPrice() );
+            }
+
+
+            //HAPPYHOUR
+            order.setPaymentStrategy(happyHourPayment);
+            order.addItem(videe, 2);
+            order.addItem(croque, 2);
+            System.out.println("The happy-hour payment strategy is implemented: ");
+            for (int i=2;i<4;i++){
+                System.out.println(order.getOrderItemList().get(i).getQuantity() + " " + order.getOrderItemList().get(i).getDish().getName() + " price " + order.getOrderItemList().get(i).getAppliedPrice() );
+            }
+
+            //NORMAAL
+            order.setPaymentStrategy(normalPayment);
+            order.addItem(videe, 2);
+            order.addItem(croque, 2);
+            System.out.println("The normal payment strategy is implemented again: ");
+            for (int i=4;i<6;i++){
+                System.out.println(order.getOrderItemList().get(i).getQuantity() + " " + order.getOrderItemList().get(i).getDish().getName() + " price " + order.getOrderItemList().get(i).getAppliedPrice() );
+            }
+            System.out.println("Order balance " + order.getTotal() + " euro");
+            System.out.println("####################################################################");
+            feedbacktekst = "strategytest has been executed. Check the output window of IntelliJ to see the result";
         }
         if (request.getParameter("decoratortest") != null) {
 //            EntranceCounter entranceCounter = EntranceCounter.getInstance();
