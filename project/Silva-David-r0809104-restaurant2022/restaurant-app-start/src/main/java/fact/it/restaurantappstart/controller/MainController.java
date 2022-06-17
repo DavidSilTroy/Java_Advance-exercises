@@ -17,50 +17,54 @@ public class MainController {
         String feedbacktekst ="";
 
         if (request.getParameter("singletontest") != null) {
-//            System.out.println("####################################################################");
-//            EntranceCounter it1 = EntranceCounter.getInstance();
-//            EntranceCounter it2;
-//            it2 = EntranceCounter.getInstance();
-//            if (it1 == it2) {
-//                System.out.println("The 2 singleton variables refer to the same object.");
-//            } else {
-//                System.out.println("The Singleton-pattern is not correct implemented");
-//            }
-//            System.out.println("####################################################################");
-//            feedbacktekst = "The singletontest has been executed. Check the output window of IntelliJ to see the result";
+            System.out.println("####################################################################");
+            EntranceCounter it1 = EntranceCounter.getInstance();
+            EntranceCounter it2;
+            it2 = EntranceCounter.getInstance();
+            if (it1 == it2) {
+                System.out.println("The 2 singleton variables refer to the same object.");
+            } else {
+                System.out.println("The Singleton-pattern is not correct implemented");
+            }
+            System.out.println("####################################################################");
+            feedbacktekst = "The singletontest has been executed. Check the output window of IntelliJ to see the result";
 
         }
         if (request.getParameter("observertest") != null) {
-//            EntranceCounter klantTeller = EntranceCounter.getInstance();
-//
-//            //een paar personeelsleden
-//            Waiter jan = new Waiter("Jan");
-//            Waiter piet = new Waiter("Piet");
-//            KitchenStaff serge = new KitchenStaff("Serge");
-//            KitchenStaff jeroen = new KitchenStaff("Jeroen");
-//
-//            //we koppelen de spelers en scheidsrechter als observer aan de bal
-//            klantTeller.attachObserver(jan);
-//            klantTeller.attachObserver(piet);
-//            klantTeller.attachObserver(serge);
-//            klantTeller.attachObserver(jeroen);
-//
-//
-//            System.out.println("####################################################################");
-//            System.out.println("After attaching the observers, 5 customers enter the restaurant (the number of entrance counter is set at 5)");
-//            //bal van positie veranderen
-//            klantTeller.setNumber(5);
-//            //lege lijn
-//            System.out.println();
-//            //we doen enkele observers weg
-//            klantTeller.detachObserver(piet);
-//            klantTeller.detachObserver(serge);
-//
-//            System.out.println("After detaching Piet and Serge, 3 customers enter the restaurant (the number of the entrance counter is set tot 3)");
-//            //we veranderen de bal weer van positie
-//            klantTeller.setNumber(3);
-//            System.out.println("####################################################################");
-//            feedbacktekst = "The observer test has been executed. Check the output window of IntelliJ to see the result";
+            EntranceCounter klantTeller = EntranceCounter.getInstance();
+
+            //een paar personeelsleden
+            Waiter jan = new Waiter();
+            jan.setName("Jan");
+            Waiter piet = new Waiter();
+            piet.setName("Piet");
+            KitchenStaff serge = new KitchenStaff();
+            serge.setName("Serge");
+            KitchenStaff jeroen = new KitchenStaff();
+            jeroen.setName("Jeroen");
+
+            //we koppelen de spelers en scheidsrechter als observer aan de bal
+            klantTeller.attachObserver(jan);
+            klantTeller.attachObserver(piet);
+            klantTeller.attachObserver(serge);
+            klantTeller.attachObserver(jeroen);
+
+
+            System.out.println("####################################################################");
+            System.out.println("After attaching the observers, 5 customers enter the restaurant (the number of entrance counter is set at 5)");
+            //bal van positie veranderen
+            klantTeller.setNumber(5);
+            //lege lijn
+            System.out.println();
+            //we doen enkele observers weg
+            klantTeller.detachObserver(piet);
+            klantTeller.detachObserver(serge);
+
+            System.out.println("After detaching Piet and Serge, 3 customers enter the restaurant (the number of the entrance counter is set tot 3)");
+            //we veranderen de bal weer van positie
+            klantTeller.setNumber(3);
+            System.out.println("####################################################################");
+            feedbacktekst = "The observer test has been executed. Check the output window of IntelliJ to see the result";
 
         }
         if (request.getParameter("strategytest") != null) {

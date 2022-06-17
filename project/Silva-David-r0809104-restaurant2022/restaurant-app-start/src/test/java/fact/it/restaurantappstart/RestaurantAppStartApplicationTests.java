@@ -16,101 +16,101 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class RestaurantAppStartApplicationTests {
 
-//    @Test
-//    public void a_testSingleton_1() {
-//        EntranceCounter entranceCounter = EntranceCounter.getInstance();
-//        EntranceCounter entranceCounter1 = EntranceCounter.getInstance();
-//        assertTrue(entranceCounter == entranceCounter1);
-//    }
+    @Test
+    public void a_testSingleton_1() {
+        EntranceCounter entranceCounter = EntranceCounter.getInstance();
+        EntranceCounter entranceCounter1 = EntranceCounter.getInstance();
+        assertTrue(entranceCounter == entranceCounter1);
+    }
 //
-//    @Test
-//    public void b_testObserverPattern_attach_1() {
-//        EntranceCounter entranceCounter = EntranceCounter.getInstance();
-//        entranceCounter.getObservers().clear();
-//        //een paar personeelsleden
-//        Waiter jan = new Waiter();
-//        jan.setName("Jan");
-//        Waiter piet = new Waiter();
-//        piet.setName("Piet");
-//        KitchenStaff serge = new KitchenStaff();
-//        serge.setName("Serge");
-//        KitchenStaff jeroen = new KitchenStaff();
-//        jeroen.setName("Jeroen");
+    @Test
+    public void b_testObserverPattern_attach_1() {
+        EntranceCounter entranceCounter = EntranceCounter.getInstance();
+        entranceCounter.getObservers().clear();
+        //een paar personeelsleden
+        Waiter jan = new Waiter();
+        jan.setName("Jan");
+        Waiter piet = new Waiter();
+        piet.setName("Piet");
+        KitchenStaff serge = new KitchenStaff();
+        serge.setName("Serge");
+        KitchenStaff jeroen = new KitchenStaff();
+        jeroen.setName("Jeroen");
+
+        //we koppelen het zaalpersoneel en het keukenpersoneel als observer aan de entranceCounter
+        entranceCounter.attachObserver(jan);
+        entranceCounter.attachObserver(piet);
+        entranceCounter.attachObserver(serge);
+        entranceCounter.attachObserver(jeroen);
+        PrintStream defaultSO = System.out;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        String result;
+        System.setOut(new PrintStream(baos));
+        try {
+            //5 klanten komen binnen
+            entranceCounter.setNumber(5);
+            BufferedReader br = new BufferedReader(new StringReader(baos.toString()));
+            result = br.readLine();
+            assertEquals("I am Jan and I start preparing the table for 5 customers.", result);
+            result = br.readLine();
+            assertEquals("I am Piet and I start preparing the table for 5 customers.", result);
+            result = br.readLine();
+            assertEquals("I am Serge and I start now with preparing 5 appetizers!", result);
+            result = br.readLine();
+            assertEquals("I am Jeroen and I start now with preparing 5 appetizers!", result);
+            br.close();
+        } catch (Exception e) {
+            System.setOut(defaultSO);
+            System.out.println("Error while redirection System.out");
+        }
+        System.setOut(defaultSO);
+
+    }
 //
-//        //we koppelen het zaalpersoneel en het keukenpersoneel als observer aan de entranceCounter
-//        entranceCounter.attachObserver(jan);
-//        entranceCounter.attachObserver(piet);
-//        entranceCounter.attachObserver(serge);
-//        entranceCounter.attachObserver(jeroen);
-//        PrintStream defaultSO = System.out;
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        String result;
-//        System.setOut(new PrintStream(baos));
-//        try {
-//            //5 klanten komen binnen
-//            entranceCounter.setNumber(5);
-//            BufferedReader br = new BufferedReader(new StringReader(baos.toString()));
-//            result = br.readLine();
-//            assertEquals("I am Jan and I start preparing the table for 5 customers.", result);
-//            result = br.readLine();
-//            assertEquals("I am Piet and I start preparing the table for 5 customers.", result);
-//            result = br.readLine();
-//            assertEquals("I am Serge and I start now with preparing 5 appetizers!", result);
-//            result = br.readLine();
-//            assertEquals("I am Jeroen and I start now with preparing 5 appetizers!", result);
-//            br.close();
-//        } catch (Exception e) {
-//            System.setOut(defaultSO);
-//            System.out.println("Error while redirection System.out");
-//        }
-//        System.setOut(defaultSO);
-//
-//    }
-//
-//    @Test
-//    public void c_testObserverPattern_detach_2() {
-//        EntranceCounter entranceCounter = EntranceCounter.getInstance();
-//        entranceCounter.getObservers().clear();
-//        //een paar personeelsleden
-//        Waiter jan = new Waiter();
-//        jan.setName("Jan");
-//        Waiter piet = new Waiter();
-//        piet.setName("Piet");
-//        KitchenStaff serge = new KitchenStaff();
-//        serge.setName("Serge");
-//        KitchenStaff jeroen = new KitchenStaff();
-//        jeroen.setName("Jeroen");
-//        //we koppelen het zaalpersoneel en het keukenpersoneel als observer aan de entranceCounter
-//        entranceCounter.attachObserver(jan);
-//        entranceCounter.attachObserver(piet);
-//        entranceCounter.attachObserver(serge);
-//        entranceCounter.attachObserver(jeroen);
-//        //we ontkoppelen piet en serge
-//        entranceCounter.detachObserver(piet);
-//        entranceCounter.detachObserver(serge);
-//
-//        PrintStream defaultSO = System.out;
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        String result;
-//        System.setOut(new PrintStream(baos));
-//        try {
-//            //3 klanten komen binnen
-//            entranceCounter.setNumber(3);
-//            BufferedReader br = new BufferedReader(new StringReader(baos.toString()));
-//            result = br.readLine();
-//            assertEquals("I am Jan and I start preparing the table for 3 customers.", result);
-//            result = br.readLine();
-//            assertEquals("I am Jeroen and I start now with preparing 3 appetizers!", result);
-//            result = br.readLine();
-//            br.close();
-//        } catch (Exception e) {
-//            System.setOut(defaultSO);
-//            System.out.println("Error while redirection System.out");
-//        }
-//        System.setOut(defaultSO);
-//
-//    }
-//
+    @Test
+    public void c_testObserverPattern_detach_2() {
+        EntranceCounter entranceCounter = EntranceCounter.getInstance();
+        entranceCounter.getObservers().clear();
+        //een paar personeelsleden
+        Waiter jan = new Waiter();
+        jan.setName("Jan");
+        Waiter piet = new Waiter();
+        piet.setName("Piet");
+        KitchenStaff serge = new KitchenStaff();
+        serge.setName("Serge");
+        KitchenStaff jeroen = new KitchenStaff();
+        jeroen.setName("Jeroen");
+        //we koppelen het zaalpersoneel en het keukenpersoneel als observer aan de entranceCounter
+        entranceCounter.attachObserver(jan);
+        entranceCounter.attachObserver(piet);
+        entranceCounter.attachObserver(serge);
+        entranceCounter.attachObserver(jeroen);
+        //we ontkoppelen piet en serge
+        entranceCounter.detachObserver(piet);
+        entranceCounter.detachObserver(serge);
+
+        PrintStream defaultSO = System.out;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        String result;
+        System.setOut(new PrintStream(baos));
+        try {
+            //3 klanten komen binnen
+            entranceCounter.setNumber(3);
+            BufferedReader br = new BufferedReader(new StringReader(baos.toString()));
+            result = br.readLine();
+            assertEquals("I am Jan and I start preparing the table for 3 customers.", result);
+            result = br.readLine();
+            assertEquals("I am Jeroen and I start now with preparing 3 appetizers!", result);
+            result = br.readLine();
+            br.close();
+        } catch (Exception e) {
+            System.setOut(defaultSO);
+            System.out.println("Error while redirection System.out");
+        }
+        System.setOut(defaultSO);
+
+    }
+
 //    @Test
 //    public void d_testStrategyPatternZonderBetaalStrategie_1(){
 //        //gerechten aanmaken
